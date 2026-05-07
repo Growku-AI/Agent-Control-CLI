@@ -352,6 +352,26 @@ type Project struct {
 	Priority    string             `json:"priority"`
 }
 
+type ProjectGoal struct {
+	ID          pgtype.UUID        `json:"id"`
+	ProjectID   pgtype.UUID        `json:"project_id"`
+	Title       string             `json:"title"`
+	Description pgtype.Text        `json:"description"`
+	TargetDate  pgtype.Timestamptz `json:"target_date"`
+	Status      string             `json:"status"`
+	CreatedAt   pgtype.Timestamptz `json:"created_at"`
+	UpdatedAt   pgtype.Timestamptz `json:"updated_at"`
+}
+
+type ProjectRepository struct {
+	ID            pgtype.UUID        `json:"id"`
+	ProjectID     pgtype.UUID        `json:"project_id"`
+	Url           string             `json:"url"`
+	Name          string             `json:"name"`
+	DefaultBranch pgtype.Text        `json:"default_branch"`
+	CreatedAt     pgtype.Timestamptz `json:"created_at"`
+}
+
 type Skill struct {
 	ID          pgtype.UUID        `json:"id"`
 	WorkspaceID pgtype.UUID        `json:"workspace_id"`
