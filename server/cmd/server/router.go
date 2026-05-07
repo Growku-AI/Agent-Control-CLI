@@ -295,6 +295,16 @@ func NewRouter(pool *pgxpool.Pool, hub *realtime.Hub, bus *events.Bus, analytics
 					r.Get("/", h.GetProject)
 					r.Put("/", h.UpdateProject)
 					r.Delete("/", h.DeleteProject)
+					r.Get("/goals", h.ListProjectGoals)
+					r.Post("/goals", h.CreateProjectGoal)
+					r.Route("/goals/{goalId}", func(r chi.Router) {
+						r.Get("/", h.GetProjectGoal)
+						r.Put("/", h.UpdateProjectGoal)
+						r.Delete("/", h.DeleteProjectGoal)
+					})
+					r.Get("/repositories", h.ListProjectRepositories)
+					r.Post("/repositories", h.AddProjectRepository)
+					r.Delete("/repositories/{repoId}", h.RemoveProjectRepository)
 				})
 			})
 
